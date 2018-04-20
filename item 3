@@ -1,0 +1,45 @@
+module alfabeto7s(
+ input logic clk,
+ output logic [6:0] D7S,
+ output logic [3:0] AN,
+ logic n);
+
+always_comb
+ begin 
+   case(n)
+        3'b000://primer display g
+        begin
+            D7S[2:0]=1'b1;
+            D7S[6:5]=1'b1;
+             
+        end  
+        3'b001://segundo display d
+        begin
+            D7S[4:1]=1'b1;
+            D7S[6]=1'b1;
+        end
+        3'b011://4todisplay  H
+        begin
+            D7S[6:4]=1'b1;
+            D7S[2:1]=1'b1;  
+        end
+        3'b100://5to display n
+        begin
+            D7S[2:0]=1'b1;
+            D7S[5:4]=1'b1;
+        end
+        3'b100://7mo display H
+        begin
+            D7S[6:4]=1'b1;
+            D7S[2:1]=1'b1;
+        end
+        3'b100://8vo display b
+        begin
+            D7S[6:2]=1'b1;
+            
+        end
+        default
+           D7S[6:0]=1'b0;         
+   endcase
+ end
+endmodule
